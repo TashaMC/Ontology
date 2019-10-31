@@ -4,19 +4,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CLIComponent } from './cli/cli.component';
-import { CancerComponent } from './cancer/cancer.component';
-import { Cancer } from './cancer/models/cancer';
+import { OntologyModule } from './ontology/ontology.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CLIComponent,
-    CancerComponent
+    CLIComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    OntologyModule
   ],
   providers: [],
   bootstrap: [AppComponent]

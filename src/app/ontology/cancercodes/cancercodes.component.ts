@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { CancerCodesService } from  './cancer-codes.service'
+import { CancerCodesService } from  './services/cancer-codes.service'
 import { Cancer } from  './models/cancer';
 
 @Component({
-  selector: 'app-cancer',
-  templateUrl: './cancer.component.html',
+  selector: 'app-cancercodes',
+  templateUrl: './cancercodes.component.html',
   styles: []
 })
-export class CancerComponent implements OnInit {
-  
-  private code: Cancer[]
+export class CancercodesComponent implements OnInit {
+
+  private codes: Cancer[]
   errorMessage: String;
 
   constructor(private _CancerCodesService: CancerCodesService) { 
@@ -18,7 +18,7 @@ export class CancerComponent implements OnInit {
   ngOnInit() {
     this._CancerCodesService.getCode().subscribe({
       next: code => {
-         this.code = code;
+         this.codes = code;
       },
       error: err => this.errorMessage = err
     });

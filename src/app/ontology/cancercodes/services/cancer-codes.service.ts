@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { Cancer } from  './models/cancer';
+import { Cancer } from  '../models/cancer';
 
 @Injectable({
   providedIn: 'root'
