@@ -12,15 +12,27 @@ export class CancerCodesService {
 
   constructor(private _http: HttpClient) {
     this.codeUrl = "http://0.0.0.0:3000/cancerCodes";
+
   }
   
-  getCode(): Observable<Cancer[]> {
+  getAllCodes(): Observable<Cancer[]> {
     return this._http.get<Cancer[]>(this.codeUrl, {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     }).pipe(
       tap(data => console.group('All: ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+  getCode(code: number): Observable<Cancer> {
+    return this._http.get<Cancer>(this.codeUrl+`${code}`, {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    }).pipe(
+      tap(data => console.group('Code' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }

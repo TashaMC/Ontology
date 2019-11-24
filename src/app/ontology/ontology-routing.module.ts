@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CancercodesComponent } from './cancercodes/cancercodes.component';
-
+import { CancercodesComponent } from './components/cancercodes/cancercodes.component';
+import { OntologyComponent } from './ontology.component';
 
 const routes: Routes = [
-  {path: 'cancercodes', component: CancercodesComponent},
-  {path: '**', redirectTo: 'cancercodes', pathMatch: 'full'}
-
+  { path: '', component: OntologyComponent,
+    children: [
+      { path: '', component: CancercodesComponent, pathMatch: 'full' }
+    ]
+  }
 ];
 
 @NgModule({

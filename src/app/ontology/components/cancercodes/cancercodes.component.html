@@ -1,0 +1,38 @@
+<div class="flex-container">
+    <div class="flex-item">
+      <mat-form-field >
+          <!-- <mat-label>Fill form field</mat-label>
+          <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>-->
+          <input matInput 
+            placeholder="Cancer Code" 
+            [(ngModel)]='cancerCode'>
+      </mat-form-field>
+      <p>{{returnCancerValue}}</p>
+      
+      <button mat-button 
+              color = "primary">
+        Translate!</button>
+    </div>
+    <div class="flex-item">
+      <mat-form-field >
+          <!-- <mat-label>Fill form field</mat-label>
+          <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>-->
+          <input matInput 
+            placeholder="Other Code" 
+            [(ngModel)]='otherCode'>
+      </mat-form-field>
+      <p>{{returnOtherValue}}</p>
+      
+      <button mat-button 
+              color = "primary">
+        Translate!</button>
+    </div>
+    
+    
+</div>
+
+<li *ngFor="let code of codes">
+  {{code.cancerId}}
+  {{code.cancerCode}}
+  {{code.match}}
+</li>
