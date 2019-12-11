@@ -11,51 +11,65 @@ import { Observable } from 'rxjs';
 export class CancercodesComponent implements OnInit {
 
   private codes: Cancer[];
-  private _cancerCode: number;
-  private _returnCancerValue: number;
-  private _otherCode: number;
-  private _returnOtherValue: number;
+  private _cancerCode: string;
+  private _returnCancerValue: Cancer[];
+  private _otherCode: string;
+  private _returnOtherValue: string;
   errorMessage: String;
 
   constructor(private _CancerCodesService: CancerCodesService) { 
   }
 
-  set cancerCode(value: number){
+  set cancerCode(value: string){
       this._cancerCode = value;
-      this._CancerCodesService.getCode(this._cancerCode)
   }
-  get cancerCode(): number{
+  get cancerCode(): string{
     return this._cancerCode
   }
 
-  set returnCancerCode(value: number){
+  set returnCancerCode(value: Cancer[]){
     this._returnCancerValue = value;
   }
-  get returnCancerCode(): number{
+  get returnCancerCode(): Cancer[]{
     return this._returnCancerValue
   }
 
-  set returnOtherCode(value: number){
+  set returnOtherCode(value: string){
     this._returnOtherValue = value;
   }
-  get returnOtherCode(): number{
+  get returnOtherCode(): string{
     return this._returnOtherValue
   }
 
-  set otherCode(value: number){
+  set otherCode(value: string){
     this._otherCode = value;
   }
-  get othereCode(): number{
+  get othereCode(): string{
     return this._otherCode
   }
 
+stuff(): string {
+  return "1234";
+}
+
+  translateCancerCode(code: string) {
+    this._CancerCodesService.getCode(code).subscribe({
+     next: returnCode => {
+      this._returnCancerValue = returnCode;
+
+       //this.returnCancerCode(returnCode);
+     },
+     error: err => this.errorMessage = err
+   });
+  }
+
   ngOnInit() {
-    this._CancerCodesService.getAllCodes().subscribe({
-      next: code => {
-         this.codes = code;
-      },
-      error: err => this.errorMessage = err
-    });
+    // this._CancerCodesService.getAllCodes().subscribe({
+    //   next: code => {
+    //      this.codes = code;
+    //   },
+    //   error: err => this.errorMessage = err
+    // });
   }
 
 }

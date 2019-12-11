@@ -1,5 +1,5 @@
 export class Cancer {
-  cancerID: number;
+  cancerId: number;
   cancerCode: string;
   otherCode: string;
 }

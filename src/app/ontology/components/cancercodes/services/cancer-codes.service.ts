@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Cancer } from  '../models/cancer';
 
@@ -9,10 +9,10 @@ import { Cancer } from  '../models/cancer';
 })
 export class CancerCodesService {
   private codeUrl : string;
-
+  
   constructor(private _http: HttpClient) {
-    this.codeUrl = "http://0.0.0.0:3000/cancerCodes";
-
+    this.codeUrl = "http://0.0.0.0:3000/cancerCodes/";
+    
   }
   
   getAllCodes(): Observable<Cancer[]> {
@@ -26,13 +26,19 @@ export class CancerCodesService {
     );
   }
 
-  getCode(code: number): Observable<Cancer> {
-    return this._http.get<Cancer>(this.codeUrl+`${code}`, {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    }).pipe(
-      tap(data => console.group('Code' + JSON.stringify(data))),
+  getCode(code: string): Observable<Cancer[]> {
+
+    const options = {
+      headers: new HttpHeaders().append('Content-Type',  'application/json'),
+      params: new HttpParams().append("code",code)
+    }
+
+    return this._http.get<Cancer[]>(
+      '/RetrieveCodes', 
+      
+     options
+     ).pipe(
+      tap(data => console.group('Code' + data[0])),
       catchError(this.handleError)
     );
   }

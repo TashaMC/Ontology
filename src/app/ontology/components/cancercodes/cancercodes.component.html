@@ -9,7 +9,7 @@
       </mat-form-field>
       <p>{{returnCancerValue}}</p>
       
-      <button mat-button 
+      <button mat-button (click) = 'translateCancerCode(cancerCode)'
               color = "primary">
         Translate!</button>
     </div>

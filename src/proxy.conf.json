@@ -1,0 +1,10 @@
+{
+  "/RetrieveCodes/*" : {
+      "target": "http://localhost:5000",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "pathRewrite": {"^/RetrieveCodes" : "http://localhost:5000/RetrieveCodes"}
+  }
+}
+
