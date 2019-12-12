@@ -2,9 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.12.
 
-## Development server
+## Getting project up and running
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Run Container
+docker container run --name ontology -dit -v $(pwd):/opt/app -w /opt/app -p 4200:4200 teracy/angular-cli /bin/bash
+
+## Start and attach Container
+docker start /ontology
+docker attach /ontology
+
+## start server with project
+ng serve —-host=0.0.0.0
+
+## open project
+Navigate to `http://localhost:4200/`
+
+### Basic Setup Directions
 
 ## Code scaffolding
 
