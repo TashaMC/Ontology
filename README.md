@@ -11,10 +11,10 @@ docker container run --name ontology -dit -v $(pwd):/opt/app -w /opt/app -p 4200
 docker start /ontology
 docker attach /ontology
 
-## start server with project
+## Start server with project
 ng serve —-host=0.0.0.0
 
-## open project
+## Open project
 Navigate to `http://localhost:4200/`
 
 ### Basic Setup Directions
